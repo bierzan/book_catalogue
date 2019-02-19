@@ -7,13 +7,34 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    
+
     <script src="js/task2.js"></script>
     <script src="js/task1.js"></script>
-    
+    <script src="js/task3.js"></script>
+
 </head>
 
 <body>
+    <div class='form-group'>
+        <form>
+            <label for='titleId'>
+                <input type='text' name='title' id='titleId' class='form-control' placeholder='Tytuł'>
+            </label>
+            <label for='authorId'>
+                <input type='text' name='author' id='authorId' class='form-control' placeholder='Autor'>
+            </label>
+            <label for='publisherId'>
+                <input type='text' name='publisher' id='publisherId' class='form-control' placeholder='Wydawca'>
+            </label>
+            <label for='typeId'>
+                <input type='text' name='type' id='typeId' class='form-control' placeholder='Rodzaj'>
+            </label>
+            <label for='isbnId'>
+                <input type='text' name='isbn' id='isbnId' class='form-control' placeholder='Numer ISBN'>
+            </label>
+            <button class='btn btn-block' id='addBtn'>Dodaj</button>
+        </form>
+    </div>
     <div id='book-list'>
 
     </div>
