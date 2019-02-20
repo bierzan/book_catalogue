@@ -4,8 +4,7 @@ $(document).ready(function () {
     $('#addBtn').on('click', function (e) {
         e.preventDefault();
 
-        var newId = Number($('#book-list').find('.btn').last().attr('data-id'))+1;
-        console.log(newId);
+        var newId = Number($('#book-list').find('.btn').last().attr('data-id')) + 1;
         var newBook = {
             "id": newId,
             "isbn": $('#isbnId').val(),
@@ -17,18 +16,20 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            url: 'http://localhost:8282/books/',
-            data: newBook,
+            url: "http://localhost:8282/books/",
+            data: JSON.stringify(newBook),
             type: "POST",
-            dataType: "application/json"
+            dataType: "json",
+            contentType: "application/json"
         }).done(function () {
-            alert('PUT completed');
+            alert('Dodano książkę');
+            loadBooks();
         });
 
     });
 
-
 });
+
 
 
 

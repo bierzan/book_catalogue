@@ -1,11 +1,10 @@
 
 
 function showDetails() {
-    var booksBtns = $('#book-list').find('.btn');
-    var details = $('#details');
+    var booksBtns = $('#book-list').find('.btn-lg');
 
     booksBtns.on('click', function () {
-        $(this).next().toggle();        
+        $(this).parent().next().toggle();        
        
     });
 };

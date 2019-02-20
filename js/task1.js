@@ -1,8 +1,13 @@
 $(document).ready(function () {
-    var bookList = $('#book-list');
-    var lastId = 0;
-    
+    loadBooks();
 
+
+})
+
+function loadBooks() {
+    var bookList = $('#book-list');
+
+    bookList.empty();
     $.ajax({
         url: "http://localhost:8282/books/",
         data: {},
@@ -11,31 +16,27 @@ $(document).ready(function () {
     }).done(function (result) {
 
         var books = result;
-        var desc = $('<div id="details"></div>');
+        var desc = $('<div class="container" id="details"></div>');
         desc.hide();
 
+        var delBtn = $('<button class="btn btn-basic btn-xs">Usuń</button>');
+
         for (var i = 0; i < books.length; i++) {
-            var bookRecord = $('<div class="btn btn-lg btn-block" id="bookTitle"></div>');
-            bookRecord.text(books[i].title);
-            bookRecord.attr('data-id',books[i].id);
+            var bookRecord = $('<div class="container   btn-group-vertical"></div>');
+            bookRecord.html('<button class="btn btn-default btn-lg">'+books[i].title+'</button>');
+            bookRecord.attr('data-id', books[i].id);
+            bookRecord.append(delBtn.clone());
             bookList.append(bookRecord);
-            bookList.append(desc.clone().append('<p>Autor: '+ books[i].author + '</p><p>Wydawca: '+ books[i].publisher + '</p><p>Typ: '+ books[i].type + '</p><p>ISBN: '+ books[i].isbn + '</p>')
+            bookList.append(desc.clone().append('<p>Autor: ' + books[i].author + '</p><p>Wydawca: ' + books[i].publisher + '</p><p>Typ: ' + books[i].type + '</p><p>ISBN: ' + books[i].isbn + '</p>')
             );
         }
-
-        lastId = books[books.length-1].id;
-        console.log(lastId);
-                
         showDetails();
     })
 
-
-    
     $('div').addClass('container');
 
-    function getNextId(){
-        return lastId+1;
-    }
+    
     
 
-})
+    
+};
