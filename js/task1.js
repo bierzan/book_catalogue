@@ -1,6 +1,8 @@
 $(document).ready(function () {
     loadBooks();
 
+    
+
 
 })
 
@@ -30,7 +32,7 @@ function loadBooks() {
             bookList.append(desc.clone().append('<p>Autor: ' + books[i].author + '</p><p>Wydawca: ' + books[i].publisher + '</p><p>Typ: ' + books[i].type + '</p><p>ISBN: ' + books[i].isbn + '</p>')
             );
         }
-        showDetails();
+        showDetails();addDelQuery();
     })
 
     $('div').addClass('container');
@@ -40,3 +42,23 @@ function loadBooks() {
 
     
 };
+
+function addDelQuery() {
+    var delBtns = $('#book-list').find('.btn-xs');
+
+    delBtns.on('click', function () {
+
+
+        var idToDel = Number($(this).parent().attr('data-id'));
+        $.ajax({
+            url: "http://localhost:8282/books/" + idToDel,
+            data: {},
+            type: "DELETE",
+            dataType: "json"
+        }).done(function () {
+            alert('Usunięto książkę');
+            loadBooks();
+        });
+
+    });
+}
