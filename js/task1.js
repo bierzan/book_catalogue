@@ -1,9 +1,5 @@
 $(document).ready(function () {
     loadBooks();
-
-    
-
-
 })
 
 function loadBooks() {
@@ -25,29 +21,24 @@ function loadBooks() {
 
         for (var i = 0; i < books.length; i++) {
             var bookRecord = $('<div class="container   btn-group-vertical"></div>');
-            bookRecord.html('<button class="btn btn-default btn-lg">'+books[i].title+'</button>');
+            bookRecord.html('<button class="btn btn-default btn-lg">' + books[i].title + '</button>');
             bookRecord.attr('data-id', books[i].id);
             bookRecord.append(delBtn.clone());
             bookList.append(bookRecord);
             bookList.append(desc.clone().append('<p>Autor: ' + books[i].author + '</p><p>Wydawca: ' + books[i].publisher + '</p><p>Typ: ' + books[i].type + '</p><p>ISBN: ' + books[i].isbn + '</p>')
             );
         }
-        showDetails();addDelQuery();
+        showDetails(); addDelQuery();
     })
 
     $('div').addClass('container');
 
-    
-    
-
-    
 };
 
 function addDelQuery() {
     var delBtns = $('#book-list').find('.btn-xs');
 
     delBtns.on('click', function () {
-
 
         var idToDel = Number($(this).parent().attr('data-id'));
         $.ajax({
